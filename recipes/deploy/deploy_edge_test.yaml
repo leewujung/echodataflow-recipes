@@ -18,3 +18,11 @@ flows:
     module: flows_helper
     deployment_name: copy-trawl-data
     interval: 10
+  file_upload_trawl:
+    module: flows_helper
+    deployment_name: file-upload-trawl
+    flow_alias: file_upload
+    interval: 10
+    cron_offset: 3
+    apply_separately: true
+    work_pool_name: local

@@ -16,3 +16,11 @@ flows:
     start_trawl_num: 1
     trawl_num_step: 1
     endpoint_url: https://sdsc.osn.xsede.org
+  file_upload_trawl:
+    src_dir: "/Users/wujung/code_git/echodataflow/test_data/trawl"
+    dest_dir: "osn_sdsc_hake:/agr230002-bucket01/mock_test/trawl"
+    exclude_subdirs: []
+    #   - backups
+    #   - "temp AB stuff"
+      # - "How to run CLAMS reports.docx"
+    max_age: -1
