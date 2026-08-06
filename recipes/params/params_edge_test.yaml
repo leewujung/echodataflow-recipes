@@ -4,3 +4,15 @@ flows:
     path_copy: "/Users/wujung/code_git/edge2cloud_ms/echodataflow_test/raw"
     s3_bucket: noaa-wcsd-pds
     exclude_before: "2024-07-07T00:00:00+00"  # use ISO8601 format: if UTC use +00:00 or Z
+  copy_trawl_data:
+    path_copy: "/Users/wujung/code_git/echodataflow/test_data/trawl"
+    s3_bucket: agr230002-bucket01
+    s3_prefix: prefect_sh2506_test/trawl
+    trawl_folders:
+      - CatchPercentages
+      - LengthFreq
+      - NetConfig
+      - Specimens
+    start_trawl_num: 1
+    trawl_num_step: 1
+    endpoint_url: https://sdsc.osn.xsede.org

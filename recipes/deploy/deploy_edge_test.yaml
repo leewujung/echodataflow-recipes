@@ -14,3 +14,7 @@ flows:
     deployment_name: copy_raw
     interval: 10
     inject_time_offset: true
+  copy_trawl_data:
+    module: flows_helper
+    deployment_name: copy-trawl-data
+    interval: 10
