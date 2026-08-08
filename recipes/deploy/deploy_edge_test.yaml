@@ -18,22 +18,6 @@ flows:
     module: flows_acoustics
     deployment_name: raw2Sv
     interval: 10
-    concurrency_limit: 1
-    concurrency_tag: raw2Sv
-  # Shared-tag example: these two flows would share one global limit of 2
-  # NOTE: Flows sharing a concurrency_tag must use the same concurrency_limit
-  # create_MVBS:
-  #   module: flows_acoustics
-  #   deployment_name: create-MVBS
-  #   interval: 10
-  #   concurrency_limit: 2
-  #   concurrency_tag: acoustics-heavy
-  # predict_hake:
-  #   module: flows_acoustics
-  #   deployment_name: predict-hake
-  #   interval: 10
-  #   concurrency_limit: 2
-  #   concurrency_tag: acoustics-heavy
   copy_trawl_data:
     module: flows_helper
     deployment_name: copy-trawl-data
