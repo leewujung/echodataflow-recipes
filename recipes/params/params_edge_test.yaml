@@ -1,55 +1,49 @@
 flows:
-  copy_raw:
-    path_raw_list: "/Users/wujung/code_git/edge2cloud_ms/data/SH2407_raw_list_organized.csv"
-    path_copy: "/Users/wujung/code_git/edge2cloud_ms/echodataflow_test/raw"
-    s3_bucket: noaa-wcsd-pds
-    exclude_before: "2024-07-07T00:00:00+00"  # use ISO8601 format: if UTC use +00:00 or Z
-  raw2Sv:
-    exclude_before: "2024-07-07T00:00:00+00:00"  # use ISO8601 format: if UTC use +00:00 or Z
-    exclude_raw_file: []
-    parallel: False
-    encode_mode: power
-    waveform_mode: CW
-    depth_offset: 7
-    sonar_model: EK80
-    nmea_sentence: GGA
-    filename_pattern: "SH2407-*.raw"
-    path_raw: "/Users/wujung/code_git/edge2cloud_ms/echodataflow_test/raw"
-    path_main: "/Users/wujung/code_git/echodataflow/test_data"
-    file_Sv_csv: Sv_files.csv
-  # Shared-tag example pair from deploy_edge_test.yaml
-  # create_MVBS:
-  #   slice_mins: 20
-  #   num_slices: 3
-  #   range_bin: 0.25m
-  #   ping_time_bin: 5s
+  # copy_raw:
+  #   path_raw_list: "/Users/wujung/code_git/edge2cloud_ms/data/SH2407_raw_list_organized.csv"
+  #   path_copy: "/Users/wujung/code_git/edge2cloud_ms/echodataflow_test/raw"
+  #   s3_bucket: noaa-wcsd-pds
+  #   exclude_before: "2024-07-07T00:00:00+00"  # use ISO8601 format: if UTC use +00:00 or Z
+  # raw2Sv:
+  #   exclude_before: "2024-07-07T00:00:00+00:00"  # use ISO8601 format: if UTC use +00:00 or Z
+  #   exclude_raw_file: []
+  #   parallel: False
+  #   encode_mode: power
+  #   waveform_mode: CW
+  #   depth_offset: 7
+  #   sonar_model: EK80
+  #   nmea_sentence: GGA
+  #   filename_pattern: "SH2407-*.raw"
+  #   path_raw: "/Users/wujung/code_git/edge2cloud_ms/echodataflow_test/raw"
   #   path_main: "/Users/wujung/code_git/echodataflow/test_data"
   #   file_Sv_csv: Sv_files.csv
-  #   file_MVBS_csv: MVBS_files.csv
-  # predict_hake:
-  #   path_main: "/Users/wujung/code_git/echodataflow/test_data"
-  #   file_MVBS_csv: MVBS_files.csv
-  #   file_track_csv: track_file.csv
-  #   file_output_csv: prediction_files.csv
-  copy_trawl_data:
-    path_copy: "/Users/wujung/code_git/echodataflow/test_data/trawl"
-    s3_bucket: agr230002-bucket01
-    s3_prefix: prefect_sh2506_test/trawl
-    trawl_folders:
-      - CatchPercentages
-      - LengthFreq
-      - NetConfig
-      - Specimens
-    start_trawl_num: 1
-    trawl_num_step: 1
-    endpoint_url: https://sdsc.osn.xsede.org
+  # copy_trawl_data:
+  #   path_copy: "/Users/wujung/code_git/echodataflow/test_data/trawl"
+  #   s3_bucket: agr230002-bucket01
+  #   s3_prefix: prefect_sh2506_test/trawl
+  #   trawl_folders:
+  #     - CatchPercentages
+  #     - LengthFreq
+  #     - NetConfig
+  #     - Specimens
+  #   start_trawl_num: 1
+  #   trawl_num_step: 1
+  #   endpoint_url: https://sdsc.osn.xsede.org
+  #
+  # TESTING USING THE SAME FLOW
   file_upload_trawl:
     src_dir: "/Users/wujung/code_git/echodataflow/test_data/trawl"
     dest_dir: "osn_sdsc_hake:/agr230002-bucket01/mock_test/trawl"
     exclude_subdirs: []
     max_age: -1
-  # file_upload_trawl2:
-  #   src_dir: "/Users/wujung/code_git/echodataflow/test_data/trawl"
-  #   dest_dir: "osn_sdsc_hake:/agr230002-bucket01/mock_test/trawl2"
-  #   exclude_subdirs: []
-  #   max_age: -1
+  file_upload_trawl2:
+    src_dir: "/Users/wujung/code_git/echodataflow/test_data/trawl"
+    dest_dir: "osn_sdsc_hake:/agr230002-bucket01/mock_test/trawl2"
+    exclude_subdirs: []
+    max_age: -1
+  #
+  # TESTING TRIGGERS
+  emit_event_ABC:
+    msg: "this is the emit event"
+  triggered_by_event_ABC:
+    msg: "this is the triggered event"
