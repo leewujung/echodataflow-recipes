@@ -9,8 +9,8 @@ flows:
     sonar_model: EK80
     nmea_sentence: GGA
     filename_pattern: "PREFIX-*.raw"
-    path_raw: /PATH/TO/raw
-    path_main: /PATH/TO/local_main
+    path_raw: ../../echodataflow-recipes/recipes_nrt/edge2cloud_hake/edge/data/raw
+    path_main: ../../echodataflow-recipes/recipes_nrt/edge2cloud_hake/edge/data
     file_Sv_csv: Sv_files.csv
 
   create_MVBS:
@@ -18,7 +18,7 @@ flows:
     num_slices: 3
     range_bin: 1m
     ping_time_bin: 5s
-    path_main: /PATH/TO/local_main
+    path_main: ../../echodataflow-recipes/recipes_nrt/edge2cloud_hake/edge/data
     file_Sv_csv: Sv_files.csv
     file_MVBS_csv: MVBS_files.csv
 
@@ -29,12 +29,12 @@ flows:
     softmax_threshold: 0.5
     max_depth: 590.0
     path_weight: /PATH/TO/model_weights/model.ckpt
-    path_main: /PATH/TO/local_main
+    path_main: ../../echodataflow-recipes/recipes_nrt/edge2cloud_hake/edge/data
     file_MVBS_csv: MVBS_files.csv
     file_prediction_csv: prediction_files.csv
 
   file_upload_acoustics:
-    src_dir: /PATH/TO/local_main
+    src_dir: ../../echodataflow-recipes/recipes_nrt/edge2cloud_hake/edge/data
     dest_dir: ENDPOINT:BUCKET/acoustics
     exclude_subdirs:
       - Sv
@@ -42,7 +42,7 @@ flows:
     max_age: 2
 
   file_upload_trawl:
-    src_dir: /PATH/TO/trawl
+    src_dir: ../../echodataflow-recipes/recipes_nrt/edge2cloud_hake/edge/data/trawl
     dest_dir: ENDPOINT:BUCKET/trawl
     exclude_subdirs: []
     max_age: 2
