@@ -1,4 +1,26 @@
 flows:
+  # Simulation flows to generate acoustic and trawl data ================
+  copy_raw:
+    path_raw_list: ../../echodataflow-recipes/recipes_nrt/edge2cloud_hake/edge/resources/raw_files.csv
+    path_copy: ../../echodataflow-recipes/recipes_nrt/edge2cloud_hake/edge/data/raw
+    endpoint_url: https://sdsc.osn.xsede.org
+    s3_bucket: agr230002-bucket01
+    exclude_before: "2025-07-09T12:00:00+00:00"  # use ISO8601 format: if UTC use +00:00 or Z
+
+  copy_trawl:
+    path_copy: ../../echodataflow-recipes/recipes_nrt/edge2cloud_hake/edge/data/trawl
+    s3_bucket: agr230002-bucket01
+    s3_prefix: prefect_sh2506_test/trawl
+    trawl_folders:
+      - CatchPercentages
+      - LengthFreq
+      - NetConfig
+      - Specimens
+    start_trawl_num: 1
+    trawl_num_step: 1
+    endpoint_url: https://sdsc.osn.xsede.org
+
+  # Actual flows ========================================================
   raw2Sv:
     exclude_before: "YYYY-mm-DDTHH:MM:SS+00:00"
     exclude_raw_file: []
@@ -8,7 +30,7 @@ flows:
     depth_offset: 7
     sonar_model: EK80
     nmea_sentence: GGA
-    filename_pattern: "PREFIX-*.raw"
+    filename_pattern: "IWCPS-*.raw"
     path_raw: ../../echodataflow-recipes/recipes_nrt/edge2cloud_hake/edge/data/raw
     path_main: ../../echodataflow-recipes/recipes_nrt/edge2cloud_hake/edge/data
     file_Sv_csv: Sv_files.csv
@@ -22,13 +44,13 @@ flows:
     file_Sv_csv: Sv_files.csv
     file_MVBS_csv: MVBS_files.csv
 
-  predict_hake:
+  classify_backscatter:
     slice_mins: 40
     num_slices: 3
     temperature: 0.5
     softmax_threshold: 0.5
     max_depth: 590.0
-    path_weight: /PATH/TO/model_weights/model.ckpt
+    path_weight: ../../echodataflow-recipes/recipes_nrt/edge2cloud_hake/edge/data/hake_model.ckpt
     path_main: ../../echodataflow-recipes/recipes_nrt/edge2cloud_hake/edge/data
     file_MVBS_csv: MVBS_files.csv
     file_prediction_csv: prediction_files.csv
