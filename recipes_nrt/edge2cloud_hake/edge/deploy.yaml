@@ -3,7 +3,7 @@ flow_start_time: # use ISO8601 format: if UTC use +00:00 or Z
 source:
   mode: local
 
-default_work_pool_name: edge-local
+default_work_pool_name: local
 
 flows:
   # Simulation flows to generate acoustic and trawl data ================

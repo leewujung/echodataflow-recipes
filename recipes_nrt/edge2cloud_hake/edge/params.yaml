@@ -50,7 +50,7 @@ flows:
     temperature: 0.5
     softmax_threshold: 0.5
     max_depth: 590.0
-    path_weight: ../../echodataflow-recipes/recipes_nrt/edge2cloud_hake/edge/data/hake_model.ckpt
+    path_weight: ../../echodataflow-recipes/recipes_nrt/edge2cloud_hake/edge/resources/hake_model.ckpt
     path_main: ../../echodataflow-recipes/recipes_nrt/edge2cloud_hake/edge/data
     file_MVBS_csv: MVBS_files.csv
     file_prediction_csv: prediction_files.csv
